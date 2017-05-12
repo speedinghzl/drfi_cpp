@@ -15,7 +15,7 @@ PYTHON_INCLUDES = $$(pkg-config --cflags python$(PYTHON_VER))
 all: lib drfi
 
 lib: cmlib rforest saliency segmentation src/py_warp/conversion.cpp src/py_warp/conversion.h src/py_warp/pyDRFI.cpp
-	$(CXX) -shared -Wl,--export-dynamic $(CFLAGS) $(INCS) $(OPENCV_LDFLAGS) $(OPENCV_LIBS) $(BOOST_LIBS) $(PYTHON_LIBS) $(PYTHON_INCLUDES) -o pyDRFI.so \
+	$(CXX) -shared -Wl,--export-dynamic $(CFLAGS) $(INCS) $(BOOST_LIBS) $(PYTHON_LIBS) $(PYTHON_INCLUDES) -o pyDRFI.so \
 		src/py_warp/conversion.cpp src/py_warp/pyDRFI.cpp CmDefinition.o cokus.o reg_RF.o RegionFeature.o \
 		SalDRFI.o segment-image.o $(LIBS)
 
